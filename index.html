@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Andrei Loy Portfolio</title>
+<meta name="description" content="Andrei Loy, BS Information Technology student at CIT-U. Full-stack web and Android projects including CrediTOR and PeriodicPro.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#1f4643">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Andrei Loy | Portfolio">
+<meta property="og:description" content="BS Information Technology student at CIT-U building full-stack web and Android apps: CrediTOR, ChemLab, ParkIT and PeriodicPro.">
+<meta property="og:url" content="https://andreiloy.vercel.app/">
+<meta property="og:image" content="https://andreiloy.vercel.app/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600&family=Sora:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+/* VOICE: friendly, precise IT student; calm low-glare surfaces, nothing shouts
+   IDEA: the classroom periodic-table wall chart (a nod to PeriodicPro and Chemlab)
+   PICTURE: 45 skills as element tiles in a periodic silhouette, the key panel sits in the gap
+   COLOUR and TYPE: soft grey-white paper, deep lab-teal fields, muted category pastels; Sora symbols + Figtree text
+   LAYOUT: name row, wall chart full width, lead project band, project grid, about, education timeline, contact band */
+:root{color-scheme:light dark;
+--bg:light-dark(#f2f3ef,#141a1a);--card:light-dark(#fbfbf8,#1b2323);--pic:light-dark(#e6eae3,#212b2a);
+--ink:light-dark(#1c2422,#e3e9e6);--muted:light-dark(#56615d,#a0aca8);--line:light-dark(#d6dbd3,#2d3837);
+--accent:light-dark(#1d6a64,#86cbc2);--on-accent:light-dark(#fff,#0f1b1a);
+--deep:light-dark(#1f4643,#183330);--deep-pic:light-dark(#28524e,#1f3d3a);
+--lang:light-dark(#f3d0c2,#4b3129);--fw:light-dark(#c9ddee,#263a4b);--be:light-dark(#d2e4cf,#2b402d);
+--tools:light-dark(#efdeb3,#463c23);--ai:light-dark(#ddd5f0,#37314e);--appr:light-dark(#ecd8e3,#45313e);
+--tile-ink:light-dark(#1c2422,#eef2f0);--phone:light-dark(#25302e,#0d1312);--lot:light-dark(#d5dbd3,#283130)}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.6 Figtree,system-ui,sans-serif;overflow-x:clip;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{font-family:Sora,system-ui,sans-serif;line-height:1.1;margin:0;text-wrap:balance;letter-spacing:-.02em}
+h2{font-size:clamp(28px,3.4vw,36px);font-weight:600}
+h3{font-size:22px;font-weight:600}
+p{margin:0}a{color:inherit}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:4px}
+.wrap{max-width:1240px;margin-inline:auto}
+.band{padding:clamp(40px,6vw,88px) max(5vw,16px)}
+.muted{color:var(--muted)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:46px;padding:0 20px;border-radius:8px;background:var(--accent);color:var(--on-accent);font:600 16px Figtree,sans-serif;text-decoration:none;border:1.5px solid var(--accent);cursor:pointer}
+.btn:hover{filter:brightness(1.08)}
+.btn.ghost{background:transparent;color:var(--accent)}
+.btn.light{background:#e6efec;border-color:#e6efec;color:#1f4643}
+.btn.ghost-light{background:transparent;border-color:#a9c2bd;color:#e6efec}
+.icon{display:inline-grid;place-items:center;width:46px;height:46px;border-radius:8px;border:1.5px solid var(--line);color:var(--ink)}
+.icon:hover{border-color:var(--accent);color:var(--accent)}.icon svg{width:20px;height:20px;fill:currentColor}
+
+/* header */
+.top{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:4px 24px;padding:8px max(5vw,16px)}
+.brand{display:inline-flex;align-items:center;gap:12px;font:600 17px Sora,sans-serif;text-decoration:none;min-height:46px}
+.mark{position:relative;display:grid;place-items:center;width:40px;height:40px;border-radius:6px;background:var(--accent);color:var(--on-accent);font:700 17px Sora,sans-serif}
+.mark i{position:absolute;top:1px;left:4px;font:500 9px Figtree,sans-serif;font-style:normal;opacity:.85}
+nav{display:flex;flex-wrap:wrap;gap:0 22px}
+nav a{display:inline-flex;align-items:center;min-height:46px;color:var(--muted);text-decoration:none;font-weight:500;font-size:16px}
+nav a:hover{color:var(--ink)}
+
+/* hero */
+.hero{padding-top:clamp(32px,5vw,64px);padding-bottom:clamp(36px,5vw,64px)}
+.intro{display:grid;grid-template-columns:minmax(0,auto) minmax(0,560px);justify-content:space-between;align-items:end;gap:20px 48px}
+h1{font-size:clamp(44px,7vw,80px);font-weight:700;letter-spacing:-.035em;line-height:1}
+.lede{font-size:clamp(17px,1.6vw,19px);color:var(--muted);max-width:60ch}
+.lede strong{color:var(--ink);font-weight:600}
+.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
+.chart{display:grid;grid-template-columns:repeat(13,minmax(0,1fr));gap:6px;margin-top:clamp(28px,4vw,48px)}
+.key{grid-column:3/12;grid-row:1/3;display:flex;align-items:center;gap:20px;padding:14px 18px;border:1px solid var(--line);border-radius:10px;background:var(--card)}
+.s1{grid-column:2;grid-row:1}.s2{grid-column:12;grid-row:1}
+.el{all:unset;box-sizing:border-box;position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;aspect-ratio:1/1.04;padding:4px;border-radius:6px;background:var(--c);color:var(--tile-ink);cursor:pointer;text-align:center;transition:transform .15s,opacity .2s}
+.el:hover{transform:translateY(-2px)}
+.el:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.el[aria-pressed=true]{outline:2.5px solid var(--ink);outline-offset:2px}
+.el .n,.big .n{position:absolute;top:4px;left:7px;font:500 13px Figtree,sans-serif;opacity:.75}
+.el b{font:700 clamp(17px,2.1vw,27px) Sora,sans-serif;letter-spacing:-.02em}
+.el .nm{font-size:13px;line-height:1.2;letter-spacing:-.01em;max-width:100%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:2px}
+.chart[data-f]:not([data-f=""]) .el{opacity:.25}
+.chart[data-f=lang] .c-lang,.chart[data-f=fw] .c-fw,.chart[data-f=be] .c-be,.chart[data-f=tools] .c-tools,.chart[data-f=ai] .c-ai,.chart[data-f=appr] .c-appr{opacity:1}
+.big{position:relative;flex:none;display:grid;place-items:center;height:100%;max-height:170px;aspect-ratio:1;border-radius:8px;background:var(--c);color:var(--tile-ink)}
+.big b{font:700 clamp(30px,4vw,58px) Sora,sans-serif;letter-spacing:-.03em}
+.kt{display:grid;gap:6px}
+.kt h3{font-size:clamp(18px,2vw,26px)}
+.kc{display:flex;align-items:center;gap:8px;color:var(--muted);font-size:15px}
+.kc i,.lg i{width:12px;height:12px;border-radius:3px;flex:none;box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--ink) 20%,transparent)}
+.ku{font-size:16px;max-width:52ch}.ku a{color:var(--accent);font-weight:600}
+.under{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:12px 24px;margin-top:16px}
+.cap{color:var(--muted);font-size:15px}
+.legend{display:flex;flex-wrap:wrap;gap:6px}
+.lg{display:inline-flex;align-items:center;gap:8px;min-height:40px;padding:0 12px;border:1px solid var(--line);border-radius:999px;background:var(--card);color:var(--ink);font:500 14px Figtree,sans-serif;cursor:pointer}
+.lg[aria-pressed=true]{border-color:var(--ink);background:var(--bg)}
+@media (prefers-reduced-motion:no-preference){.el{animation:pop .45s ease-out backwards;animation-delay:calc(var(--d)*14ms)}@keyframes pop{from{opacity:0;transform:translateY(8px)}}}
+
+/* projects */
+.proj-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:12px 32px;margin-bottom:clamp(24px,3vw,40px)}
+.proj-head p{max-width:56ch}
+.lead{background:var(--deep);color:#e6efec;padding:clamp(28px,4vw,56px) max(5vw,16px)}
+.lead-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:clamp(24px,4vw,56px);align-items:center}
+.lead .pic{background:var(--deep-pic)}
+.lead .meta,.lead .tagl{color:#a9c2bd}
+.pic{margin:0;border-radius:14px;background:var(--pic);aspect-ratio:4/3;display:grid;place-items:center;padding:12px;transition:outline-color .2s;outline:3px solid transparent;outline-offset:4px}
+.pic svg{width:100%;height:100%}
+.hit .pic{outline-color:var(--accent)}
+.shot{aspect-ratio:auto;padding:0;display:flex;flex-direction:column;align-items:stretch;justify-items:stretch;overflow:hidden;border:1px solid var(--line);background:var(--card)}
+.shot .bar{flex:none;display:flex;align-items:center;gap:6px;height:30px;padding:0 12px;background:var(--pic);color:var(--muted);font-size:13px}
+.shot .bar i{width:9px;height:9px;border-radius:50%;background:var(--line);flex:none}
+.shot .bar span{margin-left:8px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.shot img{display:block;width:100%;height:auto}
+.lead .shot{border-color:#2f5d59;background:#e6efec}.lead .shot .bar{background:#2c5955;color:#a9c2bd}.lead .shot .bar i{background:#4b7772}
+.grid2 .card:not(.wide) .pic{aspect-ratio:16/10}
+.grid2 .card:not(.wide) .shot img{flex:1;min-height:0;height:100%;object-fit:cover;object-position:left top}
+
+.meta{font-size:15px;color:var(--muted);margin-bottom:8px}
+.p-title{font-size:clamp(30px,3.6vw,40px);font-weight:700}
+.tagl{font-size:18px;color:var(--muted);margin:6px 0 16px}
+.txt>p+p{margin-top:12px}
+.stack{list-style:none;margin:20px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:6px}
+.stack li{display:inline-flex;align-items:center;gap:7px;padding:5px 10px;border-radius:6px;background:var(--c,var(--pic));color:var(--tile-ink);font-size:14px;font-weight:500}
+.lead .stack li{--c:#e6efec;color:#1c2422}
+.lead .stack li[style]{color:var(--tile-ink)}
+.stack b{font:700 13px Sora,sans-serif}
+.links{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;margin-top:20px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 16px 22px;display:grid;gap:18px;align-content:start}
+.card .txt{padding:0 6px}
+.card.wide{grid-column:1/-1;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);align-items:center;gap:clamp(20px,4vw,48px);padding:16px}
+.card.wide .txt{padding:8px 16px 8px 0}
+.more{margin-top:28px;font-size:16px}.more a{color:var(--accent);font-weight:600}
+
+/* about, education */
+.about{display:grid;grid-template-columns:minmax(0,320px) minmax(0,1fr);gap:28px clamp(28px,6vw,88px);align-items:center}
+.me{margin:0;padding:10px 10px 14px;background:var(--card);border:1px solid var(--line);border-radius:12px}
+.me img{display:block;width:100%;height:auto;border-radius:8px;background:#fff}
+.me figcaption{display:flex;align-items:center;gap:14px;padding:14px 4px 0}
+.me .mark{width:52px;height:52px;font-size:22px;flex:none}
+.who{display:grid;gap:2px;font:600 18px Sora,sans-serif}.who small{font:400 14px Figtree,sans-serif;color:var(--muted)}
+.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:24px clamp(24px,5vw,72px)}
+.prose{display:grid;gap:16px;max-width:66ch}
+.edu{background:var(--card);border-block:1px solid var(--line)}
+.tl{list-style:none;margin:0;padding:0;display:grid}
+.tl li{display:grid;grid-template-columns:minmax(0,160px) minmax(0,1fr);gap:8px 32px;padding:28px 0;border-top:1px solid var(--line)}
+.tl li:first-child{border-top:0;padding-top:0}
+.yr{font:600 clamp(32px,4vw,44px)/1 Sora,sans-serif;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.yr span{display:block;font:500 14px Figtree,sans-serif;color:var(--muted);letter-spacing:0;margin-top:8px}
+.school{font-weight:600;margin-top:6px}
+.pills{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+.pill{padding:4px 12px;border-radius:999px;background:var(--pic);font-size:14px;font-weight:500}
+
+/* contact, footer */
+.contact{background:var(--deep);color:#e6efec}
+.contact .muted{color:#a9c2bd}
+.mail{display:inline-block;font:600 clamp(22px,3.4vw,38px) Sora,sans-serif;letter-spacing:-.02em;color:#fff;text-decoration-thickness:2px;text-underline-offset:6px;overflow-wrap:anywhere}
+.reach{list-style:none;margin:24px 0 0;padding:0;display:grid;gap:4px}
+.reach a{display:inline-flex;align-items:center;gap:12px;min-height:44px;color:#e6efec}
+.reach svg{width:20px;height:20px;fill:currentColor;flex:none}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 24px;padding:24px max(5vw,16px);color:var(--muted);font-size:15px}
+footer a{color:var(--muted)}
+
+/* picture fills */
+.sh{fill:var(--ink);opacity:.08}
+.pp-ph{fill:var(--phone)}.pp-sc{fill:var(--card)}.pp-ln{fill:var(--line)}.pp-card{fill:var(--tools)}
+.pp-t{fill:var(--tile-ink);font:500 15px Figtree,sans-serif}.pp-s{fill:var(--tile-ink);font:700 76px Sora,sans-serif}
+.pp-link{fill:none;stroke:var(--accent);stroke-width:2;stroke-dasharray:4 4}
+
+@media(max-width:1100px){.el .nm{display:none}}
+@media(max-width:900px){
+ .el .n{display:none}.key{gap:14px;padding:10px 12px}.ku{font-size:15px}
+ .lead-grid,.card.wide{grid-template-columns:minmax(0,1fr)}.card.wide .txt{padding:0 6px 6px}
+ .two{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:780px){.intro,.about{grid-template-columns:minmax(0,1fr)}.me{max-width:300px}}
+@media(max-width:600px){
+ .chart{grid-template-columns:repeat(5,minmax(0,1fr))}
+ .key{grid-column:1/-1;grid-row:auto;padding:12px}.big{height:84px}.s1,.s2{display:none}
+ .el b{font-size:20px}
+ .grid2{grid-template-columns:minmax(0,1fr)}
+ .tl li{grid-template-columns:minmax(0,1fr)}
+ .top .wrap{padding-block:4px}nav{gap:0 16px}}
+</style>
+</head>
+<body>
+<header class="top">
+ <div class="wrap">
+  <a class="brand" href="#top" aria-label="Andrei Loy, back to top"><span class="mark" aria-hidden="true"><i>13</i>Al</span>Andrei Loy</a>
+  <nav aria-label="Sections"><a href="#projects">Projects</a><a href="#about">About</a><a href="#education">Education</a><a href="#contact">Contact</a></nav>
+ </div>
+</header>
+
+<main>
+<section class="hero band" id="top">
+ <div class="wrap">
+  <div class="intro">
+   <h1>Andrei Loy</h1>
+   <div>
+    <p class="lede"><strong>BS Information Technology student at Cebu Institute of Technology – University.</strong> I build full-stack web apps and Android apps, then deploy them and keep them running in production.</p>
+    <div class="actions">
+     <a class="btn" href="#projects">See my projects</a>
+     <a class="btn ghost" href="#contact">Contact me</a>
+     <a class="icon" href="https://github.com/Kitanoed" aria-label="GitHub profile"><svg viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg></a>
+     <a class="icon" href="https://www.linkedin.com/in/andrei-loy-a7233b452/" aria-label="LinkedIn profile"><svg viewBox="0 0 24 24"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg></a>
+    </div>
+   </div>
+  </div>
+  <div class="chart" id="chart" role="group" aria-label="My tech stack, laid out like a periodic table">
+   <div class="key" id="key" aria-live="polite"></div>
+   <span class="s1" aria-hidden="true"></span><span class="s2" aria-hidden="true"></span>
+  </div>
+  <div class="under">
+   <p class="cap">My stack, laid out like a periodic table. Select an element for details, or a group to filter.</p>
+   <div class="legend" id="legend" role="group" aria-label="Filter by group"></div>
+  </div>
+ </div>
+</section>
+
+<section id="projects">
+ <div class="band" style="padding-top:clamp(16px,3vw,40px);padding-bottom:0"><div class="wrap">
+  <div class="proj-head">
+   <h2>Selected projects</h2>
+   <p class="muted">Web and mobile apps I have built at CIT-U, from transcript verification to campus parking.</p>
+  </div>
+ </div></div>
+ <article class="lead" id="p-creditor" data-name="CrediTOR" data-skills="Re Tw Js Np Sb Jv Pg Jw Ra Mv Vc Rn Gt Gh Ci Do" data-extra="Vite,Docker,GitHub Actions">
+  <div class="wrap lead-grid">
+   <figure class="pic shot"><div class="bar" aria-hidden="true"><i></i><i></i><i></i><span>credi-tor.vercel.app</span></div><img src="img/creditor.jpg" width="1400" height="694" alt="CrediTOR verification page with a document control number search box and verification steps"></figure>
+   <div class="txt">
+    <p class="meta">Featured project, 2026</p>
+    <h3 class="p-title">CrediTOR</h3>
+    <p class="tagl">Transcript of Records verification system</p>
+    <p>Registrars issue each transcript with a document control number and a QR code. Anyone can scan the code or type the number to check whether the transcript is active, revoked or expired. Admins get a document registry, an audit trail with CSV export, and JWT sign-in.</p>
+    <p>The React frontend runs on Vercel and the Spring Boot API runs on Render in a Docker container. A GitHub Actions job keeps the server warm so visitors don't wait on a cold start.</p>
+    <ul class="stack"></ul>
+    <div class="links"><a class="btn light" href="https://credi-tor.vercel.app/">Open live site</a><a class="btn ghost-light" href="https://github.com/Kitanoed/CrediTOR">View code</a></div>
+   </div>
+  </div>
+ </article>
+ <div class="band" style="padding-top:20px"><div class="wrap">
+  <div class="grid2">
+   <article class="card wide" id="p-chemlab" data-name="ChemLab" data-skills="Sb Jv Re Js Np Kt Pg Jw Ra Gt Gh" data-extra="Vite,Google OAuth2,PubChem API,WebSockets,Vitest">
+    <figure class="pic shot"><div class="bar" aria-hidden="true"><i></i><i></i><i></i><span>ChemLab web app</span></div><img src="img/chemlab.jpg" width="1400" height="692" alt="ChemLab landing page with Create account and Sign in buttons"></figure>
+    <div class="txt">
+     <p class="meta">Project, 2026</p>
+     <h3 class="p-title">ChemLab</h3>
+     <p class="tagl">Lab inventory and chemical request system for web and Android</p>
+     <p>Students request chemicals, technicians approve or reject them, and admins manage users and watch a live audit feed. New inventory items fill in their details from PubChem, reports flag low-stock and expiring chemicals, and requests send email notifications.</p>
+     <p>One Spring Boot REST API, organized by feature, serves both a React web app and a Kotlin Android app. Sign-in uses JWT with Google OAuth2.</p>
+     <ul class="stack"></ul>
+     <div class="links"><a class="btn ghost" href="https://github.com/Kitanoed/IT342-Loy-ChemLab">View code</a></div>
+    </div>
+   </article>
+   <article class="card" id="p-parkit" data-name="ParkIT" data-skills="Py Dj Ht Cs Js Su Rn Gt Gh" data-extra="Gunicorn,SQLite">
+    <figure class="pic shot"><div class="bar" aria-hidden="true"><i></i><i></i><i></i><span>park-it-lzas.onrender.com</span></div><img src="img/parkit.jpg" width="1400" height="807" alt="ParkIT parking spaces view showing available and occupied slots by campus location"></figure>
+    <div class="txt">
+     <p class="meta">Project, 2025 to 2026</p>
+     <h3 class="p-title">ParkIT</h3>
+     <p class="tagl">Campus parking management for CIT-U</p>
+     <p>Replaces manual parking logs with a shared system. Attendants see which spaces are free and check vehicles in and out. Admins manage users, spaces and account status, filter the parking history, and export CSV reports and monthly summaries.</p>
+     <ul class="stack"></ul>
+     <div class="links"><a class="btn" href="https://park-it-lzas.onrender.com">Open live site</a><a class="btn ghost" href="https://github.com/Kitanoed/Park_IT">View code</a></div>
+    </div>
+   </article>
+   <article class="card" id="p-periodicpro" data-name="PeriodicPro" data-skills="Kt Gt Gh" data-extra="Android SDK,XML layouts,Material Components,SharedPreferences">
+    <figure class="pic">
+     <svg viewBox="0 0 400 300" role="img" aria-label="A phone showing a periodic table, with the oxygen element card enlarged">
+      <ellipse cx="200" cy="286" rx="160" ry="8" class="sh"/>
+      <rect x="44" y="16" width="150" height="264" rx="24" class="pp-ph"/>
+      <rect x="53" y="36" width="132" height="226" rx="14" class="pp-sc"/>
+      <rect x="63" y="50" width="112" height="16" rx="8" class="pp-ln"/>
+      <g id="mini"></g>
+      <g class="pp-ln"><rect x="63" y="152" width="112" height="24" rx="6"/><rect x="63" y="184" width="112" height="24" rx="6"/><rect x="63" y="216" width="80" height="24" rx="6"/></g>
+      <path d="M166 94L214 112" class="pp-link"/>
+      <rect x="214" y="62" width="150" height="180" rx="14" class="pp-card"/>
+      <text x="230" y="90" class="pp-t">8</text>
+      <text x="289" y="176" text-anchor="middle" class="pp-s">O</text>
+      <text x="289" y="206" text-anchor="middle" class="pp-t">Oxygen</text>
+      <text x="289" y="226" text-anchor="middle" class="pp-t" opacity=".75">15.999</text>
+     </svg>
+    </figure>
+    <div class="txt">
+     <p class="meta">Project, 2025</p>
+     <h3 class="p-title">PeriodicPro</h3>
+     <p class="tagl">Periodic table app for Android</p>
+     <p>A native Android periodic table. Tap an element for its atomic mass, electron configuration, density, melting and boiling points, oxidation states, discovery and uses. Search, filter by category, save favorites and jump back to recently viewed elements.</p>
+     <ul class="stack"></ul>
+     <div class="links"><a class="btn ghost" href="https://github.com/Kitanoed/periodicpro">View code</a></div>
+    </div>
+   </article>
+  </div>
+  <p class="more">More of my work is on <a href="https://github.com/Kitanoed?tab=repositories">GitHub</a>.</p>
+ </div></div>
+</section>
+
+<section id="about" class="band">
+ <div class="wrap about">
+  <figure class="me">
+   <img src="img/andrei-loy.jpg" alt="Andrei Loy in a dark suit and tie" width="560" height="700">
+   <figcaption><span class="mark" aria-hidden="true"><i>13</i>Al</span><span class="who">Andrei Loy<small>BS Information Technology, <span style="white-space:nowrap">CIT-U</span></small></span></figcaption>
+  </figure>
+  <div class="prose">
+   <h2>About me</h2>
+   <p>I'm Andrei, a BS Information Technology student at Cebu Institute of Technology – University, graduating in 2027. I build web apps end to end with React, Spring Boot, Django and Laravel, and Android apps with Kotlin.</p>
+   <p>I also handle what comes after the code: deploying to Vercel and Render, setting up CI/CD with GitHub Actions, and fixing the bugs that only show up in production.</p>
+   <p>I plan from specs and tests before writing code, work in Agile/Scrum teams, and use AI coding agents like Claude Code and OpenCode in my daily workflow.</p>
+  </div>
+ </div>
+</section>
+
+<section id="education" class="band edu">
+ <div class="wrap two">
+  <h2>Education</h2>
+  <ol class="tl">
+   <li>
+    <p class="yr">2027<span>Expected graduation</span></p>
+    <div><h3>BS Information Technology</h3><p class="school">Cebu Institute of Technology – University</p><p class="muted">Main Campus, N. Bacalso Ave., Cebu City</p><div class="pills"><span class="pill">GWA 4.50</span></div></div>
+   </li>
+   <li>
+    <p class="yr">2023<span>August 2017 to May 2023</span></p>
+    <div><h3>High School Diploma, With Honors</h3><p class="school">Toledo City Science High School</p><p class="muted">Ilihan Heights, Toledo City, Cebu</p><div class="pills"><span class="pill">Graduated with Honors, Rank 12</span></div></div>
+   </li>
+  </ol>
+ </div>
+</section>
+
+<section id="contact" class="band contact">
+ <div class="wrap two">
+  <div><h2>Get in touch</h2><p class="muted" style="margin-top:12px">Have an internship, OJT slot or project in mind? Email me or message me on LinkedIn.</p></div>
+  <div>
+   <a class="mail" href="mailto:loyandreisam@gmail.com">loyandreisam@gmail.com</a>
+   <div class="links"><button class="btn light" type="button" id="copy">Copy email</button></div>
+   <ul class="reach">
+    <li><a href="https://www.linkedin.com/in/andrei-loy-a7233b452/"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>linkedin.com/in/andrei-loy-a7233b452</a></li>
+    <li><a href="https://github.com/Kitanoed"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>github.com/Kitanoed</a></li>
+   </ul>
+  </div>
+ </div>
+</section>
+</main>
+
+<footer><div class="wrap"><span>© 2026 Andrei Loy, Cebu, Philippines</span><a href="#top">Back to top</a></div></footer>
+
+<script>
+{
+const CAT={
+ lang:['Languages','Language','A language I write in, from markup and styling to typed and compiled code.'],
+ fw:['Frameworks','Framework','A framework I have built web apps with, frontend or backend.'],
+ be:['Backend and APIs','Backend and APIs','Part of how I build servers, APIs, authentication and data storage.'],
+ tools:['Tools and platforms','Tool or platform','Where my code is versioned, packaged, deployed and run.'],
+ ai:['AI','AI tool','An AI coding tool or practice I work alongside day to day.'],
+ appr:['Developer approach','Practice','Part of how I plan, build, test and ship software.']};
+const S=[
+ ['Ht','HTML5','HTML5','lang'],['Cs','CSS3','CSS3','lang'],['Ph','PHP','PHP','lang'],['Ts','TypeScript','TypeScript','lang'],['Js','JavaScript','JavaScript','lang'],
+ ['Py','Python','Python','lang'],['Jv','Java','Java','lang'],['C','C','C','lang'],['Kt','Kotlin','Kotlin','lang'],['Sq','SQL','SQL','lang'],
+ ['Re','React','React','fw'],['Lv','Laravel','Laravel','fw'],['Nx','Next.js','Next.js','fw'],['Dj','Django','Django','fw'],['Sb','Spring Boot','Spring Boot','fw'],['Tw','Tailwind','Tailwind CSS','fw'],
+ ['No','Node.js','Node.js','be'],['Ex','Express','Express.js','be'],['Mv','MVC','MVC architecture','be'],['Ra','REST APIs','RESTful APIs','be'],
+ ['My','MySQL','MySQL','be'],['Pg','PostgreSQL','PostgreSQL','be'],['Ns','NoSQL','NoSQL databases','be'],['Jw','JWT','JWT authentication','be'],
+ ['Gt','Git','Git','tools'],['Gh','GitHub','GitHub','tools'],['Np','NPM','NPM','tools'],['Vc','Vercel','Vercel','tools'],
+ ['Rn','Render','Render','tools'],['Su','Supabase','Supabase','tools'],['Sn','ServiceNow','ServiceNow','tools'],['Aw','AWS','Amazon Web Services','tools'],
+ ['Cc','Claude Code','Claude Code CLI','ai'],['Oc','OpenCode','OpenCode CLI','ai'],['Sk','AI Skills','AI Skills','ai'],['Aa','Agentic AI','Agentic AI','ai'],['Av','Antigravity','Antigravity','ai'],
+ ['Sd','Spec-driven','Spec-driven development','appr'],['Td','Test-driven','Test-driven development','appr'],['Rq','Requirements','Requirements gathering','appr'],
+ ['Sl','SDLC','Software development life cycle (SDLC)','appr'],['Ag','Agile','Agile/Scrum','appr'],['Do','DevOps','DevOps','appr'],['Ci','CI/CD','CI/CD','appr'],['Dd','Doc-driven','Document-driven development','appr']];
+const chart=document.getElementById('chart'),key=document.getElementById('key'),legend=document.getElementById('legend');
+const projects=[...document.querySelectorAll('[data-skills]')].map(el=>({el,id:el.id,name:el.dataset.name,skills:el.dataset.skills.split(' ').filter(Boolean),extra:el.dataset.extra.split(',').filter(Boolean)}));
+chart.insertAdjacentHTML('beforeend',S.map((s,i)=>`<button type="button" class="el c-${s[3]}" data-i="${i}" style="--c:var(--${s[3]});--d:${i}" aria-pressed="false" aria-label="${s[2]}, ${CAT[s[3]][1]}"><span class="n" aria-hidden="true">${i+1}</span><b aria-hidden="true">${s[0]}</b><span class="nm" aria-hidden="true">${s[1]}</span></button>`).join(''));
+const tiles=[...chart.querySelectorAll('.el')];
+const list=a=>a.length<3?a.join(' and '):a.slice(0,-1).join(', ')+' and '+a[a.length-1];
+function select(i){
+ const s=S[i],used=projects.filter(p=>p.skills.includes(s[0]));
+ tiles.forEach((t,j)=>t.setAttribute('aria-pressed',j===i?'true':'false'));
+ projects.forEach(p=>p.el.classList.toggle('hit',used.includes(p)));
+ key.innerHTML=`<div class="big" style="--c:var(--${s[3]})"><span class="n">${i+1}</span><b>${s[0]}</b></div><div class="kt"><h3>${s[2]}</h3><p class="kc"><i style="background:var(--${s[3]})"></i>${CAT[s[3]][0]}</p><p class="ku">${used.length?'Used in '+list(used.map(p=>`<a href="#${p.id}">${p.name}</a>`)):CAT[s[3]][2]}</p></div>`;
+}
+chart.addEventListener('click',e=>{const t=e.target.closest('.el');if(t)select(+t.dataset.i)});
+legend.innerHTML=Object.entries(CAT).map(([k,v])=>`<button type="button" class="lg" data-k="${k}" aria-pressed="false"><i style="background:var(--${k})"></i>${v[0]}</button>`).join('');
+legend.addEventListener('click',e=>{
+ const b=e.target.closest('.lg');if(!b)return;
+ const on=b.getAttribute('aria-pressed')!=='true';
+ legend.querySelectorAll('.lg').forEach(x=>x.setAttribute('aria-pressed','false'));
+ if(on)b.setAttribute('aria-pressed','true');
+ chart.dataset.f=on?b.dataset.k:'';
+});
+select(S.findIndex(s=>s[0]==='Sb'));
+// stack chips on project cards
+projects.forEach(p=>{
+ const ul=p.el.querySelector('.stack');if(!ul)return;
+ ul.innerHTML=p.skills.map(k=>{const s=S.find(x=>x[0]===k);return `<li style="--c:var(--${s[3]})"><b>${s[0]}</b>${s[2]}</li>`}).join('')+p.extra.map(x=>`<li>${x}</li>`).join('');
+});
+// PeriodicPro mini table
+const grp=c=>c===1?'lang':c===2?'be':c<13?'fw':c<17?'tools':c===17?'ai':'appr';
+let m='';for(let r=1;r<=7;r++)for(let c=1;c<=18;c++){
+ if(r===1&&c>1&&c<18)continue;if(r<4&&c>2&&c<13)continue;
+ const hot=r===2&&c===16;
+ m+=`<rect x="${56.5+(c-1)*7}" y="${80+(r-1)*7}" width="6" height="6" rx="1" style="fill:${hot?'var(--accent)':`var(--${grp(c)})`}"/>`;
+}
+document.getElementById('mini').innerHTML=m;
+// copy email
+document.getElementById('copy').addEventListener('click',async e=>{
+ const b=e.currentTarget;
+ try{await navigator.clipboard.writeText('loyandreisam@gmail.com');b.textContent='Email copied'}catch(err){b.textContent='Copy failed, select the address above'}
+ setTimeout(()=>{b.textContent='Copy email'},2200);
+});
+}
+</script>
+</body>
+</html>
