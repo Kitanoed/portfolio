@@ -59,6 +59,18 @@ p{margin:0}a{color:inherit}
 nav{display:flex;flex-wrap:wrap;gap:0 22px}
 nav a{display:inline-flex;align-items:center;min-height:46px;color:var(--muted);text-decoration:none;font-weight:500;font-size:16px}
 nav a:hover{color:var(--ink)}
+.menu{display:none}
+@media(max-width:700px){
+ .top .wrap{flex-wrap:nowrap;position:relative}
+ .menu{display:inline-flex;align-items:center;gap:10px;min-height:44px;padding:0 14px;border:1.5px solid var(--line);border-radius:8px;background:var(--card);color:var(--ink);font:600 15px Figtree,sans-serif;cursor:pointer}
+ .bars{position:relative;width:16px;height:2px;background:currentColor;box-shadow:0 -5px 0 currentColor,0 5px 0 currentColor}
+ .top.open .bars{background:transparent;box-shadow:none}
+ .top.open .bars::before,.top.open .bars::after{content:"";position:absolute;inset:0;background:var(--ink);transform:rotate(45deg)}
+ .top.open .bars::after{transform:rotate(-45deg)}
+ nav{display:none;position:absolute;left:0;right:0;top:100%;flex-direction:column;padding:4px max(5vw,16px) 12px;background:var(--bg);border-bottom:1px solid var(--line);box-shadow:0 12px 24px -16px rgb(0 0 0/.35)}
+ .top.open nav{display:flex}
+ nav a{min-height:50px;font-size:17px;color:var(--ink);border-bottom:1px solid var(--line)}
+ nav a:last-child{border-bottom:0}}
 
 /* hero */
 .hero{padding-top:clamp(32px,5vw,64px);padding-bottom:clamp(36px,5vw,64px)}
@@ -165,25 +177,32 @@ footer a{color:var(--muted)}
 .pp-link{fill:none;stroke:var(--accent);stroke-width:2;stroke-dasharray:4 4}
 
 @media(max-width:1100px){.el .nm{display:none}}
+@media(max-width:999px){
+ .chart{grid-template-columns:repeat(9,minmax(0,1fr))}
+ .key{grid-column:1/-1;grid-row:auto;gap:16px;padding:12px 14px}.big{height:92px}.s1,.s2{display:none}
+ .el b{font-size:clamp(18px,3vw,26px)}}
+@media(min-width:820px) and (max-width:999px){.el .nm{display:block}}
+@media(max-width:819px){.el .n{display:none}}
 @media(max-width:900px){
- .el .n{display:none}.key{gap:14px;padding:10px 12px}.ku{font-size:15px}
+ .ku{font-size:15px}
  .lead-grid,.card.wide{grid-template-columns:minmax(0,1fr)}.card.wide .txt{padding:0 6px 6px}
  .two{grid-template-columns:minmax(0,1fr)}}
 @media(max-width:780px){.intro,.about{grid-template-columns:minmax(0,1fr)}.me{max-width:300px}}
-@media(max-width:600px){
+@media(max-width:599px){
  .chart{grid-template-columns:repeat(5,minmax(0,1fr))}
- .key{grid-column:1/-1;grid-row:auto;padding:12px}.big{height:84px}.s1,.s2{display:none}
+ .key{padding:12px}.big{height:80px}
  .el b{font-size:20px}
  .grid2{grid-template-columns:minmax(0,1fr)}
  .tl li{grid-template-columns:minmax(0,1fr)}
- .top .wrap{padding-block:4px}nav{gap:0 16px}}
+}
 </style>
 </head>
 <body>
 <header class="top">
  <div class="wrap">
   <a class="brand" href="#top" aria-label="Andrei Loy, back to top"><span class="mark" aria-hidden="true"><i>13</i>Al</span>Andrei Loy</a>
-  <nav aria-label="Sections"><a href="#projects">Projects</a><a href="#about">About</a><a href="#education">Education</a><a href="#contact">Contact</a></nav>
+  <button class="menu" type="button" aria-expanded="false" aria-controls="nav"><span class="bars" aria-hidden="true"></span>Menu</button>
+  <nav id="nav" aria-label="Sections"><a href="#projects">Projects</a><a href="#about">About</a><a href="#education">Education</a><a href="#contact">Contact</a></nav>
  </div>
 </header>
 
@@ -392,6 +411,12 @@ let m='';for(let r=1;r<=7;r++)for(let c=1;c<=18;c++){
  m+=`<rect x="${56.5+(c-1)*7}" y="${80+(r-1)*7}" width="6" height="6" rx="1" style="fill:${hot?'var(--accent)':`var(--${grp(c)})`}"/>`;
 }
 document.getElementById('mini').innerHTML=m;
+// mobile menu
+const bar=document.querySelector('.top'),menu=bar.querySelector('.menu');
+const setMenu=o=>{bar.classList.toggle('open',o);menu.setAttribute('aria-expanded',String(o))};
+menu.addEventListener('click',()=>setMenu(!bar.classList.contains('open')));
+bar.querySelectorAll('nav a').forEach(a=>a.addEventListener('click',()=>setMenu(false)));
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&bar.classList.contains('open')){setMenu(false);menu.focus()}});
 // copy email
 document.getElementById('copy').addEventListener('click',async e=>{
  const b=e.currentTarget;
